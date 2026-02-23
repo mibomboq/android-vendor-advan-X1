@@ -6,6 +6,7 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/advan/X1
 
 PRODUCT_COPY_FILES += \
+    vendor/advan/X1/proprietary/system/etc/public.libraries-mtk.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/public.libraries-mtk.txt \
     vendor/advan/X1/proprietary/vendor/app/mcRegistry/020f0000000000000000000000000000.drbin:$(TARGET_COPY_OUT_VENDOR)/app/mcRegistry/020f0000000000000000000000000000.drbin \
     vendor/advan/X1/proprietary/vendor/app/mcRegistry/020f0000000000000000000000000000.tlbin:$(TARGET_COPY_OUT_VENDOR)/app/mcRegistry/020f0000000000000000000000000000.tlbin \
     vendor/advan/X1/proprietary/vendor/app/mcRegistry/035c0000000000000000000000000000.drbin:$(TARGET_COPY_OUT_VENDOR)/app/mcRegistry/035c0000000000000000000000000000.drbin \
@@ -37,7 +38,6 @@ PRODUCT_COPY_FILES += \
     vendor/advan/X1/proprietary/vendor/etc/BSTAISCENE:$(TARGET_COPY_OUT_VENDOR)/etc/BSTAISCENE \
     vendor/advan/X1/proprietary/vendor/etc/BSTAI_HDR:$(TARGET_COPY_OUT_VENDOR)/etc/BSTAI_HDR \
     vendor/advan/X1/proprietary/vendor/etc/MNL_Config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/MNL_Config.xml \
-    vendor/advan/X1/proprietary/vendor/etc/VideoLog_dynamic.xml:$(TARGET_COPY_OUT_VENDOR)/etc/VideoLog_dynamic.xml \
     vendor/advan/X1/proprietary/vendor/etc/aibokeh_BSTAI_preview:$(TARGET_COPY_OUT_VENDOR)/etc/aibokeh_BSTAI_preview \
     vendor/advan/X1/proprietary/vendor/etc/aibokeh_BSTAI_still:$(TARGET_COPY_OUT_VENDOR)/etc/aibokeh_BSTAI_still \
     vendor/advan/X1/proprietary/vendor/etc/apdb/APDB_MT6789___W2422:$(TARGET_COPY_OUT_VENDOR)/etc/apdb/APDB_MT6789___W2422 \
@@ -305,9 +305,7 @@ PRODUCT_PACKAGES += \
     libh264dec_sa.ca7 \
     libh264dec_sd.ca7 \
     libh264dec_se.ca7 \
-    libh264enc_sa.ca7 \
     libmp4enc_sa.ca7 \
-    libmp4enc_xa.ca7 \
     libvcodec_utility_plat.mt6789 \
     libvp8dec_sa.ca7 \
     libvp8enc_sa.ca7 \
@@ -329,7 +327,6 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss-impl-mediatek \
     android.hardware.gnss@2.1-impl-mediatek \
     audio.primary.mediatek \
-    audio.r_submix.mediatek \
     fingerprint.mt6789 \
     gps.default \
     hwcomposer.mtk_common \
@@ -435,9 +432,15 @@ PRODUCT_PACKAGES += \
     libcarrierconfig \
     libcmdl \
     libcmdl_ndk.mtk.vndk \
+    libcodec2_hidl@1.0-v33 \
+    libcodec2_hidl@1.1-v33 \
+    libcodec2_hidl@1.2-v33 \
+    libcodec2_hidl_plugin-v33 \
     libcodec2_mtk_c2store \
     libcodec2_mtk_vdec \
     libcodec2_mtk_venc \
+    libcodec2_soft_common-v33 \
+    libcodec2_vndk-v33 \
     libcodec2_vpp_qt_plugin \
     libcodec2_vpp_rs_plugin \
     libcomposer_ext \
@@ -526,7 +529,7 @@ PRODUCT_PACKAGES += \
     libmvpu_runtime_pub \
     libmvpuop_mtk_cv \
     libmvpuop_mtk_nn \
-    libneuron_graph_delegate.mtk \
+    libneuron_graph_delegate.mtk_vendor \
     libneuron_platform \
     libnir_neon_driver_ndk.mtk.vndk \
     libnpagent \
@@ -544,11 +547,13 @@ PRODUCT_PACKAGES += \
     librmsclib1 \
     librpc \
     librt_extamp_intf \
+    libsfplugin_ccodec_utils-v33 \
     libspeech_enh_lib \
     libspeechparser_vendor \
+    libstagefright_bufferqueue_helper-ap3a \
     libstorage_otp \
     libtensorflowlite \
-    libtflite_mtk \
+    libtflite_mtk_vendor \
     libtrm \
     libudf \
     libvendor.goodix.hardware.biometrics.fingerprint@2.1 \
@@ -562,7 +567,6 @@ PRODUCT_PACKAGES += \
     libvow_ap_test_hh \
     libvow_ap_test_nn \
     libvpu \
-    libwifi-hal-mtk \
     libwpfa \
     libwvhidl \
     libwvdrmengine \
@@ -837,10 +841,10 @@ PRODUCT_PACKAGES += \
     libvainr_model \
     libmtkcam_streaminfo_plugin-p1stt \
     nfc_nci.st21nfc.st \
-    vendor.mediatek.hardware.apuware.apusys@2.0 \
-    vendor.mediatek.hardware.apuware.apusys@2.1 \
-    vendor.mediatek.hardware.apuware.hmp@1.0 \
-    vendor.mediatek.hardware.apuware.utils@2.0 \
+    vendor.mediatek.hardware.apuware.apusys@2.0_vendor \
+    vendor.mediatek.hardware.apuware.apusys@2.1_vendor \
+    vendor.mediatek.hardware.apuware.hmp@1.0_vendor \
+    vendor.mediatek.hardware.apuware.utils@2.0_vendor \
     vendor.mediatek.hardware.audio@6.1 \
     vendor.mediatek.hardware.audio@7.1 \
     vendor.mediatek.hardware.bluetooth.audio@2.1 \
@@ -897,6 +901,52 @@ PRODUCT_PACKAGES += \
     vendor.trustonic.tee.tui@1.0 \
     vendor.trustonic.tee@1.0 \
     vendor.trustonic.tee@1.1 \
+    libapuwareapusys.mtk \
+    libapuwareapusys_v2.mtk \
+    libapuwarehmp.mtk \
+    libapuwareutils.mtk \
+    libapuwareutils_v2.mtk \
+    libapuwarexrp.mtk \
+    libapuwarexrp_v2.mtk \
+    libarmnn_ndk.mtk \
+    libcmdl_ndk.mtk \
+    libmvpu_cic_ci_compiler.mtk \
+    libmvpu_cic_ci_compiler_25.mtk \
+    libmvpu_clc_14_mvpu_elf_25.mtk \
+    libmvpu_clc_mvpu_elf.mtk \
+    libmvpu_config.mtk \
+    libmvpu_engine.mtk \
+    libmvpu_engine_25.mtk \
+    libmvpu_engine_25_pub.mtk \
+    libmvpu_engine_pub.mtk \
+    libmvpu_pattern.mtk \
+    libmvpu_pattern_25.mtk \
+    libmvpu_pattern_25_pub.mtk \
+    libmvpu_pattern_pub.mtk \
+    libmvpu_runtime.mtk \
+    libmvpu_runtime_25.mtk \
+    libmvpu_runtime_25_pub.mtk \
+    libmvpu_runtime_builtin.mtk \
+    libmvpu_runtime_builtin_25.mtk \
+    libmvpu_runtime_pub.mtk \
+    libmvpuop25_mtk_cv.mtk \
+    libmvpuop25_mtk_nn.mtk \
+    libmvpuop_mtk_cv.mtk \
+    libmvpuop_mtk_nn.mtk \
+    libneuron_graph_delegate.mtk \
+    libneuronusdk_adapter.mtk \
+    libnir_neon_driver_ndk.mtk \
+    libtflite_mtk.mtk \
+    vendor.mediatek.hardware.apuware.apusys-V3-ndk \
+    vendor.mediatek.hardware.apuware.apusys@1.0 \
+    vendor.mediatek.hardware.apuware.apusys@2.0 \
+    vendor.mediatek.hardware.apuware.apusys@2.1 \
+    vendor.mediatek.hardware.apuware.hmp@1.0 \
+    vendor.mediatek.hardware.apuware.utils-V1-ndk \
+    vendor.mediatek.hardware.apuware.utils@1.0 \
+    vendor.mediatek.hardware.apuware.utils@2.0 \
+    vendor.mediatek.hardware.apuware.xrp@1.0 \
+    vendor.mediatek.hardware.apuware.xrp@2.0 \
     android.hardware.neuralnetworks-shim-service-mtk.xml \
     android.hardware.security.keymint-service.trustonic.xml \
     android.hardware.security.secureclock-service.trustonic.xml \
@@ -957,7 +1007,6 @@ PRODUCT_PACKAGES += \
     vendor_lib_libvpudv3a_vcodec_so \
     vendor_lib64_egl_libGLES_mali_so \
     vendor_lib64_hw_audio_primary_mt6789_so \
-    vendor_lib64_hw_audio_r_submix_mt6789_so \
     vendor_lib64_hw_kmsetkey_default_so \
     vendor_lib64_hw_gatekeeper_trustonic_so \
     vendor_lib64_hw_gatekeeper_default_so \
