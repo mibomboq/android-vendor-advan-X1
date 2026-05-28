@@ -1022,6 +1022,7 @@ PRODUCT_PACKAGES += \
     vendor_lib64_hw_vendor_mediatek_hardware_camera_lomoeffect@1_0-impl_so \
     vendor_lib64_hw_vendor_mediatek_hardware_pq@2_15-impl_so \
     vendor_lib64_hw_vulkan_mali_so \
+    vendor_lib64_hw_vulkan_mt6789_so \
     vendor_lib64_hw_sensors_mt6789_so \
     vendor_lib64_arm_graphics-V1-ndk_platform_so \
     vendor_lib64_bf2257csmacro_mipi_raw_IdxMgr_so \

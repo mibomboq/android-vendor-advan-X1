@@ -24327,3 +24327,10 @@ install_symlink {
     installed_location: "lib64/mtkcam/libmtkcam_streaminfo_plugin-p1stt.so",
     symlink_target: "/vendor/lib64/mtkcam/mt6789/libmtkcam_streaminfo_plugin-p1stt.so",
 }
+
+install_symlink {
+    name: "vendor_lib64_hw_vulkan_mt6789_so",
+    soc_specific: true,
+    installed_location: "lib64/hw/vulkan.mt6789.so",
+    symlink_target: "/vendor/lib64/hw/mt6789/vulkan.mali.so",
+}
